@@ -19,11 +19,12 @@ do {
                   |  
         0|1|2     | $board[0]|$board[1]|$board[2]  
         3|4|5     | $board[3]|$board[4]|$board[5]  
-        6|7|8     | $board[6]|$board[7]|$board[8]  
+        6|7|8     | $board[6]|$board[7]|$board[8]
+        \n  
         EOL;
 
 
-        $position = (int) readline("\nPlayer {$player}, digite uma posição: ");
+        $position = (int) readline("Player {$player}, digite uma posição: ");
         // validações
         if (!in_array($position, [0, 1, 2, 3, 4, 5, 6, 7, 8])) {
             echo "\n Posição inexistente, digite novamente.\n";
@@ -35,8 +36,10 @@ do {
             continue;
         }
 
+        $board[$position]  =  $player;
         // validação de sequência
-        if (($board[0] === 'X' && $board[1] === 'X' && $board[2] === 'X') ||
+        if (
+            ($board[0] === 'X' && $board[1] === 'X' && $board[2] === 'X') ||
             ($board[3] === 'X' && $board[4] === 'X' && $board[5] === 'X') ||
             ($board[6] === 'X' && $board[7] === 'X' && $board[8] === 'X') ||
             ($board[0] === 'X' && $board[3] === 'X' && $board[6] === 'X') ||
@@ -80,9 +83,9 @@ do {
     EOL;
 
     if ($winner === 'X') {
-        echo "VENCEDOR: {$playerOne}.\n";
+        echo "VENCEDOR: {$PlayerOne}.\n";
     } elseif ($winner === 'O') {
-        echo "VENCEDOR: {$playerTwo}.\n";
+        echo "VENCEDOR: {$PlayerTwo}.\n";
     } else {
         echo "EMPATE.\n";
     }
